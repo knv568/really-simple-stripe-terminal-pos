@@ -21,7 +21,7 @@ That’s what this app does. Nothing else — no inventory, no tables, no kitche
 Built with Stripe’s **server-driven** Terminal integration: your Stripe secret key stays on the server, and the reader only shows Stripe’s payment UI.
 
 ---
-![Charge screen on a phone — amount, quick presets, optional details, and email receipt](docs/screenshot.png)
+![Charge screen on a phone — amount, quick presets, optional details, and email receipt](docs/really-simple-stripe-terminal-pos-640.png)
 
 ---
 ## Features
