@@ -1,18 +1,21 @@
 # Contributor guide — Really Simple Stripe Terminal POS
 
-Notes for developers extending or contributing to this open-source project. Operator setup: **README.md**.
+Notes for developers extending or contributing to this open-source **template** repository. Operator setup: **README.md**.
 
 ## What this project is
 
 A **free, minimal staff-facing web POS** for in-person card payments via **BBPOS WisePOS E** (or simulated reader) using Stripe’s **server-driven Terminal** integration.
 
+This repo is a **[GitHub template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)**. Operators create their own repository from it, customize [`src/lib/branding.ts`](src/lib/branding.ts), and deploy independently. Improvements to the shared codebase land here via issues and PRs — not from individual deployed instances.
+
 | Component | Role |
 |-----------|------|
-| **This repo** (`really-simple-stripe-terminal-pos`) | Next.js app deployed to Vercel (or similar) |
+| **This repo** (`really-simple-stripe-terminal-pos`) | Template + upstream source; Next.js app deployed to Vercel (or similar) |
+| **Operator repos** | Created from template; own Stripe keys, branding, and Vercel project |
 | **WisePOS E** | Payment terminal UI only — does **not** run this app |
 | **Stripe** | Payment processing; distinguish POS charges via metadata |
 
-**Customization:** Edit [`src/lib/branding.ts`](src/lib/branding.ts) for business name, page title, Stripe tags, and quick-amount presets.
+**Customization (operators):** Edit [`src/lib/branding.ts`](src/lib/branding.ts) for business name, page title, Stripe tags, and quick-amount presets.
 
 ## Naming conventions
 
@@ -21,7 +24,7 @@ Use consistently (defaults in `branding.ts`):
 | Context | Default | Customize in |
 |---------|---------|--------------|
 | App / product name | `My Business` | `BRAND.businessName` |
-| npm package | `really-simple-stripe-terminal-pos` | `package.json` |
+| npm package | `really-simple-stripe-terminal-pos` | `package.json` (operators may rename after creating from template) |
 | Stripe metadata `payment_type` | `pos` | `STRIPE_TAGS.paymentType` |
 | Stripe metadata `source` | `really-simple-stripe-terminal-pos` | `STRIPE_TAGS.source` |
 | PaymentIntent description prefix | `BRAND.businessName` | `buildDescription()` in `stripe.ts` |
@@ -173,6 +176,8 @@ npm test
 2. Reuse `getStripe()`, `getReaderId()`, metadata helpers in `src/lib/stripe.ts`.
 3. Update `branding.ts` for business-specific naming; avoid scattering literals.
 4. Update **README.md** and this file if env vars or flows change.
+
+**Template maintenance:** keep defaults generic in `branding.ts`; never commit secrets. Operators merge `upstream/main` into their repos to pick up changes — see README **Staying updated**.
 
 ## Key Stripe docs
 

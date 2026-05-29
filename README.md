@@ -4,9 +4,7 @@
 
 Run it on a phone or tablet. Connect a [Stripe Terminal](https://docs.stripe.com/terminal) reader (e.g. **BBPOS WisePOS E**). Take payments — no monthly POS subscription, no vendor lock-in beyond Stripe’s own fees.
 
-MIT licensed. Fork it, deploy it, rename it. One file to customize: [`src/lib/branding.ts`](src/lib/branding.ts).
-
-![Charge screen on a phone — amount, quick presets, optional details, and email receipt](docs/screenshot.png)
+MIT licensed. **[Use this template](https://github.com/knv568/really-simple-stripe-terminal-pos/generate)** to create your own repo, deploy it, and rename it. One file to customize: [`src/lib/branding.ts`](src/lib/branding.ts).
 
 ---
 
@@ -23,7 +21,9 @@ That’s what this app does. Nothing else — no inventory, no tables, no kitche
 Built with Stripe’s **server-driven** Terminal integration: your Stripe secret key stays on the server, and the reader only shows Stripe’s payment UI.
 
 ---
+![Charge screen on a phone — amount, quick presets, optional details, and email receipt](docs/screenshot.png)
 
+---
 ## Features
 
 - **Simple charge screen** — amount, optional customer/reference/note, quick-amount buttons
@@ -50,11 +50,23 @@ You pay Stripe’s normal processing fees. This software is **free**.
 
 ---
 
-## Quick start
+## Get started
+
+### 1. Create your repo (recommended)
+
+This repository is a **[GitHub template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)** — each business runs its own copy with its own Stripe keys and branding.
+
+1. Click **[Use this template → Create a new repository](https://github.com/knv568/really-simple-stripe-terminal-pos/generate)**
+2. Choose a name (e.g. `acme-cafe-pos`) and create the repo under your account or org
+3. Clone **your** new repo locally (see step 2 below)
+
+Your repo starts fresh — not linked to this template’s commit history — so you can deploy and customize without affecting other operators.
+
+### 2. Run locally
 
 ```bash
-git clone https://github.com/knv568/really-simple-stripe-terminal-pos.git
-cd really-simple-stripe-terminal-pos
+git clone git@github.com:YOUR_ACCOUNT/YOUR_REPO.git
+cd YOUR_REPO
 cp .env.example .env.local
 # Add your Stripe test key, reader ID, PIN, and session secret
 npm install
@@ -62,6 +74,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000), sign in with your PIN, and charge.
+
+**Just trying it out?** You can clone this template repo directly instead of creating from template — use that only for evaluation, not production.
 
 **Test reader:** Stripe Dashboard (test mode) → Terminal → Register reader → registration code `simulated-wpe`.
 
@@ -83,7 +97,9 @@ Edit [`src/lib/branding.ts`](src/lib/branding.ts):
 | `STRIPE_TAGS` | Metadata on each payment (`payment_type`, `source`) |
 | `QUICK_AMOUNTS_GBP` | Preset amount buttons (defaults: £5, £10, £15, £20) |
 
-Deploy to Vercel, set the four env vars (see below), open the URL on staff devices, **Add to Home Screen** — done.
+Then deploy to Vercel, set the four env vars (see below), open the URL on staff devices, and **Add to Home Screen** — done.
+
+Optional: rename the npm package in [`package.json`](package.json) and update `STRIPE_TAGS.source` so Stripe metadata reflects your project name.
 
 ---
 
@@ -159,12 +175,30 @@ Create separate keys for **Test** and **Live**. Docs: [Restricted API keys](http
 
 ## Deploy to Vercel
 
-1. Push this repo to GitHub  
-2. [vercel.com/new](https://vercel.com/new) → import → **Next.js**  
-3. Add all four environment variables (live values for production)  
-4. Deploy  
-5. Optional: add a custom domain (e.g. `pos.yourbusiness.com`)  
+1. Create your repo from this template (see **Get started**)
+2. [vercel.com/new](https://vercel.com/new) → import **your** repo → **Next.js**
+3. Add all four environment variables (live values for production)
+4. Deploy
+5. Optional: add a custom domain (e.g. `pos.yourbusiness.com`)
 6. Staff: open the URL → sign in → **Share → Add to Home Screen**
+
+---
+
+## Staying updated
+
+Template repos do not auto-sync with this project. To pull in fixes and features from upstream:
+
+```bash
+git remote add upstream https://github.com/knv568/really-simple-stripe-terminal-pos.git
+git fetch upstream
+git merge upstream/main   # resolve conflicts in branding.ts, package.json, etc.
+```
+
+**Usually safe to merge:** `src/app/api/`, `src/lib/` (except your edits in `branding.ts`), `src/components/`, tests, config.
+
+**Keep yours:** `branding.ts`, env vars, Vercel project settings, and any business-specific UI changes.
+
+Watch or star the [template repo](https://github.com/knv568/really-simple-stripe-terminal-pos) for releases. Security reports: [SECURITY.md](./SECURITY.md).
 
 ---
 
@@ -183,6 +217,8 @@ Useful if you run other Stripe integrations on the same account.
 ---
 
 ## For developers
+
+**Contributing to the template:** open issues or PRs on [this repository](https://github.com/knv568/really-simple-stripe-terminal-pos). Deployed instances from the template are separate repos — send improvements here, not from production forks.
 
 | Route | Method | Auth | Purpose |
 |-------|--------|------|---------|
@@ -233,6 +269,8 @@ Architecture and conventions: [AGENTS.md](./AGENTS.md).
 
 ## Links
 
+- [Use this template](https://github.com/knv568/really-simple-stripe-terminal-pos/generate) — create your POS repo  
+- [Creating a repo from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)  
 - [Stripe Terminal](https://docs.stripe.com/terminal)  
 - [Server-driven integration](https://docs.stripe.com/terminal/payments/setup-integration?terminal-sdk-platform=server-driven)  
 - [WisePOS E setup](https://docs.stripe.com/terminal/payments/setup-reader/bbpos-wisepos-e)  
