@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f4ef;
+  --foreground: #1c1917;
+  --accent: #3d5a47;
+  --accent-hover: #2f4638;
+  --surface: #ffffff;
+  --muted: #78716c;
+  --border: #e7e5e4;
+  --danger: #b91c1c;
+  --success: #166534;
+  --footer-height: 5.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --font-sans: var(--font-geist-sans);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  min-height: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* iPhone safe areas (notch + home indicator) */
+.pos-page {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+  padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+  overscroll-behavior: none;
+}
+
+.pos-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+}
+
+.pos-footer {
+  flex-shrink: 0;
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, var(--background) 70%, transparent);
+}
+
+/* 16px+ inputs prevent iOS Safari zoom-on-focus */
+.pos-input {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  min-height: 2.75rem;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep PIN masked while using iOS-friendly tel input */
+.pos-pin-input {
+  -webkit-text-security: disc;
+}
+
+.pos-input-amount {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  min-height: 3.25rem;
+}
+
+/* Minimum 44pt touch targets (Apple HIG) */
+.touch-target {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+.touch-target:active {
+  opacity: 0.85;
+}
+
+@media (hover: hover) {
+  .touch-target:hover {
+    opacity: 0.95;
+  }
+}
