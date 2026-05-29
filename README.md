@@ -53,8 +53,8 @@ You pay Stripe’s normal processing fees. This software is **free**.
 ## Quick start
 
 ```bash
-git clone https://github.com/knv568/stripe-terminal.git
-cd stripe-terminal
+git clone https://github.com/knv568/really-simple-stripe-terminal-pos.git
+cd really-simple-stripe-terminal-pos
 cp .env.example .env.local
 # Add your Stripe test key, reader ID, PIN, and session secret
 npm install
