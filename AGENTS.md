@@ -29,6 +29,9 @@ Use consistently (defaults in `branding.ts`):
 | Stripe metadata `source` | `really-simple-stripe-terminal-pos` | `STRIPE_TAGS.source` |
 | PaymentIntent description prefix | `BRAND.businessName` | `buildDescription()` in `stripe.ts` |
 | Page title / PWA | `Really Simple Stripe Terminal POS` | `BRAND.pageTitle` |
+| PWA home screen label | `My Business` | `BRAND.pwaShortName` (≤12 chars recommended) |
+| PWA icon glyph | first letter of `pwaShortName` | `BRAND.iconMark` (optional, 1–2 chars) |
+| PWA / UI accent | `#3d5a47` | `BRAND.accentColor` (sync with `--accent` in globals.css) |
 | UI subtitle | `Point of Sale` | `BRAND.locationSubtitle` (empty to hide) |
 
 ## Architecture (server-driven)
@@ -61,7 +64,8 @@ Node: see `.tool-versions` (22.x).
 src/
   app/
     page.tsx              # Login gate → PosApp | LoginForm
-    layout.tsx            # Metadata from BRAND
+    layout.tsx            # Metadata from BRAND + PWA icons
+    manifest.ts           # Web app manifest (home screen / install)
     globals.css           # .pos-page, .touch-target, tokens
     api/
       auth/login|logout/
@@ -76,7 +80,8 @@ src/
     pos-app.tsx
   lib/
     auth.ts
-    branding.ts           # Business name, Stripe tags, quick amounts
+    branding.ts           # Business name, PWA colors/mark, Stripe tags, quick amounts
+ pwa-icon.tsx          # ImageResponse icon from BRAND
     stripe.ts             # metadata helpers using STRIPE_TAGS
     payment-intent-access.ts  # poll/cancel guard for POS-owned PIs
 ```
