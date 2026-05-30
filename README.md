@@ -93,11 +93,16 @@ Edit [`src/lib/branding.ts`](src/lib/branding.ts):
 |---------|-----------------|
 | `BRAND.businessName` | Header and receipt description in Stripe |
 | `BRAND.locationSubtitle` | Subtitle under the title (empty string to hide) |
-| `BRAND.pageTitle` | Browser tab / PWA name |
+| `BRAND.pageTitle` | Browser tab / full PWA name |
+| `BRAND.pwaShortName` | Home screen label when staff add the app (keep short) |
+| `BRAND.iconMark` | Icon glyph (1–2 chars); empty = first letter of `pwaShortName` |
+| `BRAND.accentColor` / `backgroundColor` / `iconForeground` | PWA theme + generated icon colors (match `globals.css`) |
 | `STRIPE_TAGS` | Metadata on each payment (`payment_type`, `source`) |
 | `QUICK_AMOUNTS_GBP` | Preset amount buttons (defaults: £5, £10, £15, £20) |
 
 Then deploy to Vercel, set the four env vars (see below), open the URL on staff devices, and **Add to Home Screen** — done.
+
+The app ships a [web app manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest) (`src/app/manifest.ts`). Icons are generated from `branding.ts` (letter on your accent color). On **iPhone/iPad**: Share → **Add to Home Screen**. On **Android Chrome**: menu → **Install app** or **Add to Home screen** (wording varies). After changing branding, redeploy (or refresh in dev) so the home screen icon updates.
 
 Optional: rename the npm package in [`package.json`](package.json) and update `STRIPE_TAGS.source` so Stripe metadata reflects your project name.
 
