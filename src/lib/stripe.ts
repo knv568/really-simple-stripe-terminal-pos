@@ -89,7 +89,7 @@ export function buildMetadata(input: ChargeRequest): Record<string, string> {
 }
 
 export function buildDescription(input: ChargeRequest): string {
-  const parts = [BRAND.businessName];
+  const parts: string[] = [BRAND.businessName];
   if (input.customerName?.trim()) {
     parts.push(`— ${input.customerName.trim()}`);
   }
