@@ -1,8 +1,8 @@
 import type Stripe from "stripe";
 import { STRIPE_TAGS } from "@/lib/branding";
 
-const POS_PAYMENT_TYPES = new Set([STRIPE_TAGS.paymentType]);
-const POS_SOURCES = new Set([STRIPE_TAGS.source]);
+const POS_PAYMENT_TYPES = new Set<string>([STRIPE_TAGS.paymentType]);
+const POS_SOURCES = new Set<string>([STRIPE_TAGS.source]);
 
 const PAYMENT_INTENT_ID_PATTERN = /^pi_[a-zA-Z0-9]+$/;
 
