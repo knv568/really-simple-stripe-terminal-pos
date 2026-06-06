@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/knv568/really-simple-stripe-terminal-pos/blob/main/SECURITY.md
+    about: Report security issues privately — do not open a public issue.
+  - name: Operator setup / deployment
+    url: https://github.com/knv568/really-simple-stripe-terminal-pos/blob/main/README.md
+    about: Questions about deploying your own copy from the template.

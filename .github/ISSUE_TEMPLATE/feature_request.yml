@@ -1,0 +1,41 @@
+name: Feature request
+description: Suggest an improvement for the template POS
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a **minimal template** POS. See [CONTRIBUTING.md](../../CONTRIBUTING.md) for in/out of scope.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What staff or customer problem does this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How would you expect it to work in the app?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Why it fits this template
+      description: Why is this appropriate for a minimal server-driven Terminal POS (not a full retail system)?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      options:
+        - label: I checked this isn't better handled in my operator fork (branding/customization only)

@@ -83,6 +83,8 @@ For UI or payment-flow changes, describe how you tested (simulated reader, live 
 
 ## Pull request guidelines
 
+Use the PR template when opening a pull request. In brief:
+
 1. **One logical change per PR** when possible — easier to review and merge.
 2. **Link an issue** if one exists, or briefly explain the problem and solution in the PR description.
 3. **Keep template defaults generic** — do not change `branding.ts` to your business name.
@@ -114,10 +116,7 @@ Vitest tests live alongside source (`*.test.ts`). Add tests for non-trivial logi
 
 ## Suggesting features or reporting bugs
 
-Use [GitHub Issues](https://github.com/knv568/really-simple-stripe-terminal-pos/issues) and include:
-
-- **Bug:** steps to reproduce, expected vs actual behavior, test vs live mode if relevant.
-- **Feature:** the staff/customer problem you’re solving and why it fits a *minimal* template POS.
+Use the **Bug report** or **Feature request** templates on [GitHub Issues](https://github.com/knv568/really-simple-stripe-terminal-pos/issues). Do not open a public issue for security vulnerabilities — see [SECURITY.md](SECURITY.md).
 
 ## Staying in sync (operator repos)
 
